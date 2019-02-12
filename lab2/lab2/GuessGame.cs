@@ -38,7 +38,7 @@ namespace lab2
             {
                 ++_attempts;
 
-                string userInput = Console.ReadLine();
+                var userInput = Console.ReadLine();
                 if (userInput == "q")
                 {
                     Console.WriteLine("До свидания...");
@@ -51,7 +51,7 @@ namespace lab2
                     userInput = Console.ReadLine();
                 }
                 
-                int userNumber = int.Parse(userInput);
+                var userNumber = int.Parse(userInput);
 
                 if (userNumber < _number)
                 {
@@ -67,7 +67,7 @@ namespace lab2
 
                 if (userNumber == _number)
                 {
-                    int ellapsedMinutes = (DateTime.Now - startTime).Minutes;
+                    var ellapsedMinutes = (DateTime.Now - startTime).Minutes;
                     Console.WriteLine($"Поздравляю, вы угадали!\nКоличество попыток: {_attempts}");
                     Console.WriteLine($"История:\n{_history}Затраченное время: {ellapsedMinutes} мин");
                     break;
