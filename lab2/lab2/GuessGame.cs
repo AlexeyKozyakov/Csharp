@@ -15,7 +15,7 @@ namespace lab2
         };
         
         private int _attempts = 0;
-        private StringBuilder _history = new StringBuilder(256);
+        private readonly StringBuilder _history = new StringBuilder(256);
         private string _username;
         private int _number;
         private readonly Random _random = new Random();
