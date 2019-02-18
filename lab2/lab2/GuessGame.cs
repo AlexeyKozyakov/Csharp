@@ -14,7 +14,7 @@ namespace lab2
             "чтобы угадать число нужно только... (читать продолжение в платном источнике)"
         };
         
-        private int _attempts = 0;
+        private int _attempts;
         private readonly StringBuilder _history = new StringBuilder(256);
         private string _username;
         private int _number;
@@ -33,7 +33,7 @@ namespace lab2
         private void GuessLoop()
         {
             Console.WriteLine("Угадайте случайное число от 0 до 50");
-            DateTime startTime = DateTime.Now;
+            var startTime = DateTime.Now;
             while (true)
             {
                 ++_attempts;
