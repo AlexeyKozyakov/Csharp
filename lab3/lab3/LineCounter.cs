@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 
 namespace lab3
@@ -7,22 +8,29 @@ namespace lab3
         public static long Count(string type)
         {
             var linesNum = 0L;
-            var files = Directory.GetFiles(Directory.GetCurrentDirectory(), $"*.{type}", SearchOption.AllDirectories);
-            foreach (var file in files)
+            try
             {
-                var lines = File.ReadLines(file);
-                foreach (var line in lines)
+                var files = Directory.GetFiles(Directory.GetCurrentDirectory(), $"*.{type}",
+                    SearchOption.AllDirectories);
+                foreach (var file in files)
                 {
-                    if (string.IsNullOrWhiteSpace(line)) continue;
-                 
-                    var trimmed = line.Trim('\n', '\r', '\t', '\v', ' ');
-                    if (!trimmed.StartsWith("//"))
+                    var lines = File.ReadLines(file);
+                    foreach (var line in lines)
                     {
-                        ++linesNum;
+                        if (string.IsNullOrWhiteSpace(line)) continue;
+
+                        var trimmed = line.Trim('\n', '\r', '\t', '\v', ' ');
+                        if (!trimmed.StartsWith("//"))
+                        {
+                            ++linesNum;
+                        }
                     }
                 }
             }
-
+            catch (ArgumentException)
+            {
+                Console.WriteLine($"Directory does not contain {type} files");
+            }
             return linesNum;
         }
     }
